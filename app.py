@@ -1,6 +1,6 @@
 import sys
 sys.path.append(r"C:\Users\Eric\anaconda3\envs\PythonData\lib\site-packages\scraping-0.0.3.dist-info")
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect
 from flask_pymongo import PyMongo
 import scraping
 # =============================================================================
@@ -21,3 +21,6 @@ def scrape():
    mars_data = scraping.scrape_all()
    mars.update({}, mars_data, upsert=True)
    return redirect('/', code=302)
+
+if __name__ == "__main__":
+   app.run()
